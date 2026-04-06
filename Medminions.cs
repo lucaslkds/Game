@@ -1,9 +1,9 @@
 public class Medminions : Character
 {
-    double healenemis = 0.5;
+    public double HealEnemies = 0.5;
 
-    public Medminions(int maxhp, int currenthp, int attack, int heal, string name)
-        : base(maxhp, currenthp, attack, heal, name)
+    public Medminions(int maxHp, int currentHp, int attack, int heal, string name)
+        : base(maxHp, currentHp, attack, heal, name)
     {
     }
 }

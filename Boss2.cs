@@ -1,9 +1,9 @@
 public class Boss2 : Character
 {
-    int stealheath = 10;
+    public int StealHealth = 10;
 
-    public Boss2(int maxhp, int currenthp, int attack, int heal, string name)
-        : base(maxhp, currenthp, attack, heal, name)
+    public Boss2(int maxHp, int currentHp, int attack, int heal, string name)
+        : base(maxHp, currentHp, attack, heal, name)
     {
     }
 }
