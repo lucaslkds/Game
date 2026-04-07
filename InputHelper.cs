@@ -11,7 +11,7 @@ public static class InputHelper
         {
             ConsoleKeyInfo key = Console.ReadKey(true);
 
-            if (key.Key == ConsoleKey.Z)
+            if (key.Key == ConsoleKey.Escape)
             {
                 Console.WriteLine();
                 Console.WriteLine("Game closed.");

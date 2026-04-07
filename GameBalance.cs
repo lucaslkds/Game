@@ -8,9 +8,9 @@ public static class GameBalance
     public const int MedMinionAttack = 2;
     public const int MedMinionHeal = 4;
 
-    public const int Boss1Hp = 30;
-    public const int Boss1Attack = 6;
-    public const int Boss1Heal = 3;
+    public const int BossCobraHp = 30;
+    public const int BossCobraAttack = 6;
+    public const int BossCobraHeal = 3;
 
     public const int Boss2Hp = 35;
     public const int Boss2Attack = 7;
@@ -23,4 +23,16 @@ public static class GameBalance
     public const int OnePunchHp = 50;
     public const int OnePunchAttack = 999999;
     public const int OnePunchHeal = 10;
+
+    public const int BerserkerHp = 24;
+    public const int BerserkerAttack = 6;
+    public const int BerserkerHeal = 2;
+
+    public const int PaladinHp = 28;
+    public const int PaladinAttack = 5;
+    public const int PaladinHeal = 4;
+
+    public const int MageHp = 16;
+    public const int MageAttack = 4;
+    public const int MageHeal = 2;
 }

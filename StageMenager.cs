@@ -32,7 +32,7 @@ public static class StageManager
 
             case 3:
                 List<Character> bosses = new List<Character>();
-                bosses.Add(CreateBoss1("Boss1"));
+                bosses.Add(CreateBossCobra("BossCobra"));
                 bosses.Add(CreateBoss2("Boss2"));
 
                 Random rng = new Random();
@@ -67,13 +67,13 @@ public static class StageManager
         );
     }
 
-    private static Character CreateBoss1(string name)
+    private static Character CreateBossCobra(string name)
     {
-        return new Boss1(
-            GameBalance.Boss1Hp,
-            GameBalance.Boss1Hp,
-            GameBalance.Boss1Attack,
-            GameBalance.Boss1Heal,
+        return new BossCobra(
+            GameBalance.BossCobraHp,
+            GameBalance.BossCobraHp,
+            GameBalance.BossCobraAttack,
+            GameBalance.BossCobraHeal,
             name
         );
     }

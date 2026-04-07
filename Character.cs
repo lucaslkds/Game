@@ -55,4 +55,24 @@ public class Character : IAttack, IHeal
     {
         Attack(player);
     }
+
+    public virtual bool HasSpecialAction()
+    {
+        return false;
+    }
+
+    public virtual string GetSpecialActionName()
+    {
+        return "";
+    }
+
+    public virtual bool SpecialNeedsTarget()
+    {
+        return false;
+    }
+
+    public virtual void UseSpecialAction(Character target, List<Character> enemies)
+    {
+        Console.WriteLine(Name + " has no special action.");
+    }
 }

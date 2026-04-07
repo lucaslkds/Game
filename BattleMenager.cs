@@ -36,17 +36,22 @@ public static class BattleManager
             Console.WriteLine("1 - Attack");
             Console.WriteLine("2 - Heal");
 
+            if (player.HasSpecialAction())
+            {
+                Console.WriteLine("3 - " + player.GetSpecialActionName());
+            }
+
             string action = InputHelper.ReadInputOrExit("Option: ").Trim();
 
             switch (action)
             {
                 case "1":
-                    int index = AskEnemy(enemies);
-                    player.Attack(enemies[index]);
+                    int attackIndex = AskEnemy(enemies);
+                    player.Attack(enemies[attackIndex]);
 
-                    if (!enemies[index].IsAlive())
+                    if (!enemies[attackIndex].IsAlive())
                     {
-                        Console.WriteLine(enemies[index].Name + " was defeated.");
+                        Console.WriteLine(enemies[attackIndex].Name + " was defeated.");
                     }
 
                     return;
@@ -54,6 +59,24 @@ public static class BattleManager
                 case "2":
                     player.HealSelf();
                     return;
+
+                case "3":
+                    if (player.HasSpecialAction())
+                    {
+                        Character target = null;
+
+                        if (player.SpecialNeedsTarget())
+                        {
+                            int specialIndex = AskEnemy(enemies);
+                            target = enemies[specialIndex];
+                        }
+
+                        player.UseSpecialAction(target, enemies);
+                        return;
+                    }
+
+                    Console.WriteLine("Invalid option.");
+                    break;
 
                 default:
                     Console.WriteLine("Invalid option.");

@@ -5,7 +5,7 @@ public class Game
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Press Z at any input to close the game.");
+        Console.WriteLine("Press ESC at any input to close the game.");
         Console.WriteLine();
 
         string playerName = InputHelper.ReadValidName("Enter your name: ");
@@ -37,42 +37,72 @@ public class Game
     }
 
     static Character ChoosePlayer(string playerName)
+{
+    while (true)
     {
-        while (true)
+        Console.WriteLine("Choose your character:");
+        Console.WriteLine("1 - Playerchoice1");
+        Console.WriteLine("2 - OnePunch");
+        Console.WriteLine("3 - Berserker");
+        Console.WriteLine("4 - Paladin");
+        Console.WriteLine("5 - Mage");
+
+        string choice = InputHelper.ReadInputOrExit("Option: ").Trim();
+
+        switch (choice)
         {
-            Console.WriteLine("Choose your character:");
-            Console.WriteLine("1 - Playerchoice1");
-            Console.WriteLine("2 - OnePunch");
+            case "1":
+                return new Playerchoice1(
+                    GameBalance.Playerchoice1Hp,
+                    GameBalance.Playerchoice1Hp,
+                    GameBalance.Playerchoice1Attack,
+                    GameBalance.Playerchoice1Heal,
+                    playerName
+                );
 
-            string choice = InputHelper.ReadInputOrExit("Option: ").Trim();
+            case "2":
+                return new OnePunch(
+                    GameBalance.OnePunchHp,
+                    GameBalance.OnePunchHp,
+                    GameBalance.OnePunchAttack,
+                    GameBalance.OnePunchHeal,
+                    playerName
+                );
 
-            switch (choice)
-            {
-                case "1":
-                    return new Playerchoice1(
-                        GameBalance.Playerchoice1Hp,
-                        GameBalance.Playerchoice1Hp,
-                        GameBalance.Playerchoice1Attack,
-                        GameBalance.Playerchoice1Heal,
-                        playerName
-                    );
+            case "3":
+                return new Berserker(
+                    GameBalance.BerserkerHp,
+                    GameBalance.BerserkerHp,
+                    GameBalance.BerserkerAttack,
+                    GameBalance.BerserkerHeal,
+                    playerName
+                );
 
-                case "2":
-                    return new OnePunch(
-                        GameBalance.OnePunchHp,
-                        GameBalance.OnePunchHp,
-                        GameBalance.OnePunchAttack,
-                        GameBalance.OnePunchHeal,
-                        playerName
-                    );
+            case "4":
+                return new Paladin(
+                    GameBalance.PaladinHp,
+                    GameBalance.PaladinHp,
+                    GameBalance.PaladinAttack,
+                    GameBalance.PaladinHeal,
+                    playerName
+                );
 
-                default:
-                    Console.WriteLine("Invalid option.");
-                    Console.WriteLine();
-                    break;
-            }
+            case "5":
+                return new Mage(
+                    GameBalance.MageHp,
+                    GameBalance.MageHp,
+                    GameBalance.MageAttack,
+                    GameBalance.MageHeal,
+                    playerName
+                );
+
+            default:
+                Console.WriteLine("Invalid option.");
+                Console.WriteLine();
+                break;
         }
     }
+}
 
     static void GameOver()
     {
