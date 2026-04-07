@@ -1,6 +1,7 @@
 using System;
+using System.Collections.Generic;
 
-public class Character
+public class Character : IAttack, IHeal
 {
     public int MaxHp { get; set; }
     public int CurrentHp { get; set; }
@@ -10,10 +11,48 @@ public class Character
 
     public Character(int maxHp, int currentHp, int attackPower, int healPower, string name)
     {
-        this.MaxHp = maxHp;
-        this.CurrentHp = currentHp;
-        this.AttackPower = attackPower;
-        this.HealPower = healPower;
-        this.Name = name;
+        MaxHp = maxHp;
+        CurrentHp = currentHp;
+        AttackPower = attackPower;
+        HealPower = healPower;
+        Name = name;
+    }
+
+    public bool IsAlive()
+    {
+        return CurrentHp > 0;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        CurrentHp -= damage;
+
+        if (CurrentHp < 0)
+        {
+            CurrentHp = 0;
+        }
+    }
+
+    public virtual void Attack(Character target)
+    {
+        target.TakeDamage(AttackPower);
+        Console.WriteLine(Name + " attacked " + target.Name + " for " + AttackPower + " damage.");
+    }
+
+    public virtual void HealSelf()
+    {
+        CurrentHp += HealPower;
+
+        if (CurrentHp > MaxHp)
+        {
+            CurrentHp = MaxHp;
+        }
+
+        Console.WriteLine(Name + " healed and now has " + CurrentHp + "/" + MaxHp + " HP.");
+    }
+
+    public virtual void Act(Character player, List<Character> allies)
+    {
+        Attack(player);
     }
 }
